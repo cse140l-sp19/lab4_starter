@@ -9,18 +9,18 @@ module Lab4_140L (
 		  output [4:0] L4_led
 		  );
 
-   wire 	   sccDecrypt;
-   wire 	   sccEncrypt;
-   wire            sccEldByte;
-   wire            sccEmsBitsLd;
-   wire            sccElsBitsLd;
-   wire 	   sccEmsBitsSl;
-   wire 	   sccDnibble1En;
-   wire 	   sccDnibble2En;
-   wire 	   sccDByteValid;
-   wire [7:0]      sccLdKey;
-   wire 	   sccLdLFSR;
-   wire 	   scdCharIsValid;
+   wire 	   sccDecrypt;    // processing a decrypt command
+   wire 	   sccEncrypt;    // processing an encrypt command
+   wire            sccEldByte;    // load a byte to encrypt
+   wire            sccEmsBitsLd;  // load the msbits of the newly decrypted data
+   wire            sccElsBitsLd;  // load the lsbits of the newly decrypted data
+   wire 	   sccEmsBitsSl;  // select the ms bits of newly decrypted data
+   wire 	   sccDnibble1En; // enable capture of the ms bits of encrypted data
+   wire 	   sccDnibble2En; // enable capture of the ls bits of encrypted data
+   wire 	   sccDByteValid; // decrypted byte is valid *not used*
+   wire [7:0]      sccLdKey;      // load one of 8 key 4-bit registers
+   wire 	   sccLdLFSR;     // load the LFSR from the key regsiter 
+   wire 	   scdCharIsValid; // bu_rx_data is a printable character
    
    scdp scdp (
 	      .L4_tx_data(L4_tx_data),
