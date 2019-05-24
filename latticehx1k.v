@@ -190,7 +190,7 @@ module latticehx1k(
 
    buart buart (
 		.clk (clk),
-		.resetq(1'b1),
+		.resetq(~rst),
 		.rx(uart_RXD),
 		.tx(o_serial_data),
 		.rd(1'b1),                // read strobe
